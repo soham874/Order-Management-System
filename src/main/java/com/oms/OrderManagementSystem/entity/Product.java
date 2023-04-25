@@ -2,8 +2,6 @@ package com.oms.OrderManagementSystem.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -22,11 +20,10 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "OMS_PRODUCTS")
-public class Product {
+public class Product extends BaseAudit{
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	Long id;
 	
 	@Column(name = "DESCRIPTION")

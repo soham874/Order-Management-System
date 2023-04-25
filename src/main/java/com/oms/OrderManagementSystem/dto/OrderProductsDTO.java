@@ -15,6 +15,7 @@ import lombok.experimental.FieldDefaults;
 public class OrderProductsDTO {
 
 	ProductDTO product;
+	Long quantity;
 	List<VendorDTO> VendorList;
 	
 }
