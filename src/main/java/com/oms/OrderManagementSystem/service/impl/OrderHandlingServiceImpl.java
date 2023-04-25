@@ -34,6 +34,7 @@ public class OrderHandlingServiceImpl implements OrderHandlingService{
 	@Override
 	public void addNewOrder(@NonNull OrderDTO orderDTO) {
 		
+		log.info("Received request to add new order, order --> {}",orderDTO);
 		
 		orderDTO.getOrderProducts().forEach(orderProduct -> {
 			
@@ -49,8 +50,28 @@ public class OrderHandlingServiceImpl implements OrderHandlingService{
 	}
 	
 	@Override
+	public void updateExistingOrder(@NonNull OrderDTO orderDTO, @NonNull Long existingLoadId) {
+		
+		log.info("Received request to update existing order, order id --> {}, new details --> {}",existingLoadId, orderDTO);
+		if( Boolean.TRUE.equals(orderService.findIfOrderIdExists(existingLoadId)) ) {
+			
+			log.info("Proceeding to delete existing order information and save updated details");
+			deleteExistingOrder(existingLoadId);
+			
+		} else {
+			
+			log.info("Existing order details not found, treating request as fresh order");
+		}
+		
+		orderDTO.setId(existingLoadId);
+		addNewOrder(orderDTO);
+		
+	}
+	
+	@Override
 	public void deleteExistingOrder(@NonNull Long orderID) {
 		
+		log.info("Received request to delete existing order, order id --> {}",orderID);
 		orderService.deleteExistingOrder(orderID);
 		
 	}

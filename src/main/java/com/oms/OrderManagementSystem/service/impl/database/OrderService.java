@@ -25,4 +25,16 @@ public class OrderService {
 		log.info("Deleteing order related to existing order number --> {}",orderId);
 		orderRepository.deleteById(orderId);
 	}
+	
+	public boolean findIfOrderIdExists(Long orderId) {
+		var orderFound = orderRepository.findAllById(orderId);
+		
+		if( Boolean.FALSE.equals(orderFound) ) {
+			log.warn("Exisitng order information not found for id --> {} although expected", orderId);
+			return false;
+		}
+		
+		log.info("Existing order information found");
+		return true;
+	}
 }

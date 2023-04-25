@@ -9,4 +9,6 @@ import com.oms.OrderManagementSystem.entity.Order;
 public interface OrderRepository extends JpaRepository<Order, Long>{
 
 	void deleteById(Long id);
+	
+	boolean findAllById(Long id);
 }
