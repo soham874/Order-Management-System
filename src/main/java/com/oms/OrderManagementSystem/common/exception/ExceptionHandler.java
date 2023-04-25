@@ -1,4 +1,4 @@
-package com.oms.OrderManagementSystem;
+package com.oms.OrderManagementSystem.common.exception;
 
 import java.util.HashMap;
 import java.util.Map;
