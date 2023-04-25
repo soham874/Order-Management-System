@@ -7,4 +7,6 @@ import lombok.NonNull;
 public interface OrderHandlingService {
 
 	void addNewOrder(@NonNull OrderDTO orderDTO);
+	
+	void deleteExistingOrder(@NonNull Long orderID);
 }

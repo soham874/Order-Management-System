@@ -47,6 +47,13 @@ public class OrderHandlingServiceImpl implements OrderHandlingService{
 		});
 		
 	}
+	
+	@Override
+	public void deleteExistingOrder(@NonNull Long orderID) {
+		
+		orderService.deleteExistingOrder(orderID);
+		
+	}
 
 	private void saveOrderDetails(OrderDTO orderDTO, Long productId, List<Long> vendorIDs) {
 		

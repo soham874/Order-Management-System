@@ -27,4 +27,12 @@ public class OrderManagementController {
 		orderHandlingServiceImpl.addNewOrder(orderDTO);
 		return OmsConstants.SUCCESS;
 	}
+	
+	
+	@PostMapping("/delete-order")
+	public String addNewOrder(@RequestBody @NonNull Long orderID) {
+		log.info("Received request to delete existing order, order id --> {}",orderID);
+		orderHandlingServiceImpl.deleteExistingOrder(orderID);
+		return OmsConstants.SUCCESS;
+	}
 }

@@ -8,4 +8,5 @@ import com.oms.OrderManagementSystem.entity.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long>{
 
+	void deleteById(Long id);
 }

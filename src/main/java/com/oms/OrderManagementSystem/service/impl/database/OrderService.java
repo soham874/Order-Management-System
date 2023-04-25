@@ -20,4 +20,9 @@ public class OrderService {
 		log.info("Saving new order --> {}",order);
 		orderRepository.save(order);
 	}
+	
+	public void deleteExistingOrder(Long orderId) {
+		log.info("Deleteing order related to existing order number --> {}",orderId);
+		orderRepository.deleteById(orderId);
+	}
 }
