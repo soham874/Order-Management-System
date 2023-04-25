@@ -2,6 +2,8 @@ package com.oms.OrderManagementSystem.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -24,8 +26,12 @@ import lombok.experimental.SuperBuilder;
 public class Order extends BaseAudit{
 
 	@Id
+	@Column(name = "OMS_ORDER_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long omsOrderId;
+	
 	@Column(name = "ORDER_ID")
-	Long id;
+	Long orderId;
 	
 	@Column(name = "DESCRIPTION")
 	String description;
@@ -38,7 +44,4 @@ public class Order extends BaseAudit{
 	@Column(name = "VENDOR_ID")
 	Long vendorId;
 	
-	@NotNull
-	@Column(name = "QUANTITY")
-	Integer quantity;
 }

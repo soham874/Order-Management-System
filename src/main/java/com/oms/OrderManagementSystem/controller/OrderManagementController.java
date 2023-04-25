@@ -27,7 +27,6 @@ public class OrderManagementController {
 		return OmsConstants.SUCCESS;
 	}
 	
-	
 	@PostMapping("/delete-order")
 	public String addNewOrder(@RequestBody @NonNull Long orderID) {
 		

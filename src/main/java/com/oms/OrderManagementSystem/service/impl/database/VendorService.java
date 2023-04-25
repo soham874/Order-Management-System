@@ -30,6 +30,7 @@ public class VendorService {
 			vendorRepository.save(Vendor.builder()
 					.name(vendorDTO.getName())
 					.id(vendorDTO.getId())
+					.address(vendorDTO.getAddress())
 					.lastChangeUserId(OmsConstants.OMS_SERVICE)
 					.build());
 		}

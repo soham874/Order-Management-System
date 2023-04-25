@@ -43,7 +43,7 @@ public class OrderHandlingServiceImpl implements OrderHandlingService{
 			var productId = productService.fetchOrSaveProductDetails(orderProduct.getProduct());
 			List<Long> vendorIDs = fetchVendorIdList(orderProduct.getVendorList());
 			
-			saveOrderDetails(orderDTO,productId,vendorIDs);
+			savePurchaseOrderDetails(orderDTO,productId,vendorIDs);
 			
 		});
 		
@@ -76,11 +76,11 @@ public class OrderHandlingServiceImpl implements OrderHandlingService{
 		
 	}
 
-	private void saveOrderDetails(OrderDTO orderDTO, Long productId, List<Long> vendorIDs) {
+	private void savePurchaseOrderDetails(OrderDTO orderDTO, Long productId, List<Long> vendorIDs) {
 		
 		vendorIDs.forEach(vendorId -> {
 			var orderEntity = Order.builder()
-					.id(orderDTO.getId())
+					.orderId(orderDTO.getId())
 					.description(orderDTO.getDescription())
 					.productId(productId)
 					.vendorId(vendorId)

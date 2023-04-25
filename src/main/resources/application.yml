@@ -11,6 +11,6 @@ spring:
       hibernate:
         check_nullability: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306
+    url: jdbc:mysql://127.0.0.1:3306/order_management_system
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver

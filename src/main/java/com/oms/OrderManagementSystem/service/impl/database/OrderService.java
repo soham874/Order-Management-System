@@ -1,5 +1,7 @@
 package com.oms.OrderManagementSystem.service.impl.database;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +25,13 @@ public class OrderService {
 	
 	public void deleteExistingOrder(Long orderId) {
 		log.info("Deleteing order related to existing order number --> {}",orderId);
-		orderRepository.deleteById(orderId);
+		orderRepository.deleteAllByOrderId(orderId);
 	}
 	
 	public boolean findIfOrderIdExists(Long orderId) {
-		var orderFound = orderRepository.findAllById(orderId);
+		List<Order> orderFound = orderRepository.findAllByOrderId(orderId);
 		
-		if( Boolean.FALSE.equals(orderFound) ) {
+		if( orderFound.isEmpty() ) {
 			log.warn("Exisitng order information not found for id --> {} although expected", orderId);
 			return false;
 		}

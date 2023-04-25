@@ -1,14 +1,19 @@
 package com.oms.OrderManagementSystem.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.oms.OrderManagementSystem.entity.Order;
 
+import jakarta.transaction.Transactional;
+
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long>{
 
-	void deleteById(Long id);
+	@Transactional
+	void deleteAllByOrderId(Long orderId);
 	
-	boolean findAllById(Long id);
+	List<Order> findAllByOrderId(Long orderId);
 }
